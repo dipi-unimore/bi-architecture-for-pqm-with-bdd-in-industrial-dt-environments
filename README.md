@@ -1,2 +1,2 @@
-# Architecting Process Quality Monitoring Solution Variants with Cyber-Physical Systems
-Artifacts and materials supporting the paper "Architecting Process Quality Monitoring Solution Variants with Cyber-Physical Systems." Includes models, data, and experiments for modeling CPPS processes using a Behavior-Driven Development approach for Process Quality Monitoring.
+# Business Intelligence Architecture for Process Quality Monitoring
+Under final revision; expected publication on Monday 17th of November.
