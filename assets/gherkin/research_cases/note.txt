@@ -1,0 +1,1 @@
+In the folder "assets/gherkin/research_cases" are collected all the cases discussed during the research phase, but not considered for the publication and for the published materials.
