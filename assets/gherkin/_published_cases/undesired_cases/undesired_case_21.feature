@@ -2,7 +2,6 @@
 # Strategy: backtrack from undesired outcome of interest
 
 # Feature 21: Special cases that may result in work piece transfer failure
-
 Feature: Special cases that may result in work piece transfer failure
     - As the Quality Manager,
     - I want a resilient, adaptive process to transfer work pieces with the robot gripper,
