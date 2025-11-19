@@ -7,6 +7,16 @@ The following public resource integrates the manuscript  entitled "*Business Int
 - (i) representing the physical system structure, processes, and cause-effects relations, in both desired and undesired variants for an effective PQM improvement;
 - (ii) use depicted representation in conjunction with  Behavior-Driven Development (BDD) capabilities to highlight conditions of interest to effectively design the target a PQM information system with Digital Twins (DTs) functions.
 
+## The Concept of *Digital Twin*
+
+A Digital Twin (DT) is a digital counterpart of a physical asset that exists in the real world. Within the IoT landscape, DTs have emerged as digital entities continuously updated with real-time data from their physical counterparts, thereby supporting their management and enhancing their performance.
+
+In cyber-physical environments, and particularly in industrial contexts, DTs are becoming a cornerstone technology. They help to break down traditional data silos, enable collaboration across systems, improve data extraction, standardization, and processing, and introduce new layers of intelligence. 
+
+Thanks to their abstraction capability—namely, the ability to represent any physical asset regardless of its underlying details—DTs serve as a homogenizing layer that strengthens the interaction between upper-level digital applications and physical systems. Furthermore, their ability to augment the properties and functionalities of their physical counterparts is a defining feature, opening new opportunities to enhance system visibility and overall intelligence.
+
+In this scenario, the role of Industrial Digital Twins is well defined: they operate as a dynamic extension of the physical system, enabling horizontal integration across heterogeneous assets and fostering vertical collaboration with advanced digital tools.
+
 ## Running Example
 
 The physical system of reference used to test the methdology is depicted in the following image. It is composed by 2 conveyors, with a *Robot-Vacuum Gripper* transfering material from the first to the second. The whole system is driven by industry-grade hardware. 
@@ -42,7 +52,7 @@ The methdology has a total of 5 steps (see the image below), with the 6<sup>th</
     </figcaption>
 </div>
 
-### Step 1: Define an undesired outcome in the scope of work
+### Step 1: Define an UndesiredOoutcome in the Scope of Work
 
 The first step involves the definition of stakeholders of interest and the high-level representation of the process under exam, using the IDEF0 notation. 
 
@@ -60,24 +70,26 @@ Represented scenarios consider both *desired* (i.e., the normal execution of the
 </div>
 
 
-### Step 2: Analyze production conditions in a cause-effect network
+### Step 2: Analyze Production Conditions in a Cause-Effect Network
 
 At this step, the Cause-Effect-Network (CEN) of the desired process is built. Users start from the condition of interest, depicting its effects in the appropriate area. Then, causes leading to the effect of interest are reported as well, backtracking until potential root causes are reached.
 
 <div align="center">
-    <img src="assets/images/22-cen-desired-process-v0.png" width="402"/>
-    <img src="assets/images/32-cen-undesired-process-v0.png" width="400"/>
+    <img src="assets/images/22-cen-desired-process-v0.png" width="500"/>
+</div>
+<div align="center">
+    <img src="assets/images/33-cen-undesired-process-expanded-v0-1.png" width="500"/>
 </div>
 <div align="center">
     <figcaption>
-        <em>CEN for Desired and Undesired Conditions; causes and effects can vary substantially between the two graphs, as the condition of interest in each case can be caused - and generate - different scenarios.</em>
+        <em>CEN for Desired and Undesired Conditions; causes and effects can vary substantially between the two graphs, as the condition of interest in each case can be caused - and generate - different scenarios. The CEN for undesired conditions here proposed is the extendend version of the manuscript.</em>
         <br>
         <br>
     </figcaption>
 </div>
 
 
-### Step 3: Validate production conditions with production assets
+### Step 3: Validate Production Conditions with Production Assets
 
 The relationship existing between physical assets involved in the process, and the process itself are depicted at this step. The result, is a Process-Assets-Network (PAN), reporting all the process steps, each input and output, and assets (or their subparts) carrying out the process. The PAN can be *condensed* or *expanded* by grouping elements into appropriate modules. The same can be applied also for CENs. 
 
@@ -201,24 +213,23 @@ Stakeholders:
 ```
 
 
-### Step 4: Validate production conditions with Production Data Space
+### Step 4: Validate Production Conditions with Production Data Space
 
 Assets and properties collected at Step 3 are the taken into account by IT experts to check and validate access to the sources required to monitor the target data for modeling conditions of interest in the digital space. The result of this step is a collection of data sources and associated data points, a list of stakeholders having access to related data sources, and a list of missing data points that can improve the modeling of the system.
 
-<!--TODO: add the full PDS version-->
 <div align="center">
-    <img src="assets/images/72-pds-v0.png" width="600"/>
+    <img src="assets/images/73-pds-v0.png" width="600"/>
 </div>
 <div align="center">
     <figcaption>
-        <em>PDS for the given running example. In the image, two potential updates variants are reported, one involving an HMI to manually inform for the loss of the workpiece (A), and another automatizing the collection of the same information (B).</em>
+        <em>Expanded PDS for the given running example. In the image, two potential updates variants are reported, one involving an HMI to manually inform for the loss of the workpiece (A), and another automatizing the collection of the same information (B).</em>
         <br>
         <br>
     </figcaption>
 </div>
 
 
-### Step 5: Derive BDD scenarios for monitoring conditions
+### Step 5: Derive BDD Scenarios for Monitoring Conditions
 
 Artifacts produced so far are then used to effectively build BDD scenarios. The goal of scenarios is to guide the development - or even provide early checks - of the Information System aimed at monitor production performance spotting pontential undesired conditions or provide early warnings.
 
@@ -261,3 +272,23 @@ In this case, the condition at `Given` is taken from the CEN in its *undesired c
 Interstingly, the scenario does *not explicitely* model the actual loss of the workpiece, since the original system is not capable of track such information. The missing data point is indeed highlighted in the PDS, which can be then implemented through the two system variants depicted in the PAN. 
 
 In the second variant reported in the PAN, the concept of Digital Twin is involved. Digital Twins act as powerful mediators to integrate data from industrial heterogenous data sources (indeed, it is not expected have the ability of integrating the camera monitoring the transfering area through traditional industrial controllers), to, consequently augment the capabilities of the digitalized physical assets. In the given context, BDD scenarios act as a powerful tool to, as they (i) guide stakeholders through the definition and refinment of scenarios of interest, and (ii) can be used to build quality tests of the resulting information system, which, in this case, is represented by the modeled Digital Twin.
+
+
+### (Extra) Step 6: From the Physical Representation to the Digital Twin Architecture
+
+<div align="center">
+    <img src="assets/images/80-pan-dt-schema-v0.png" width="600"/>
+</div>
+<div align="center">
+    <figcaption>
+        <em>Resulting DT architecture, connecting assets modules to external applications interested in observing the physical system. The Robot-Vacuum-Gripper-DT acts as a a module integrating data coming from the industrial system and the additional camera, extracting the information of interest through the AI-Classification Module.</em>
+        <br>
+        <br>
+    </figcaption>
+</div>
+
+The assets represented in the PAN module form the basis for building the associated DT architecture. Since each DT reflects a ***physical context***, choosing which DTs to model is crucial to achieving a faithful digital representation of the physical assets of interest.
+
+For example, in some cases, it may be useful to adopt a single, monolithic DT to represent an entire department as a single entity in the digital domain. In other contexts, however, a greater level of detail is more advantageous: in this second approach, multiple DTs are adopted, each dedicated to a specific physical asset (i.e., a context). These collect data from all its physical sources, process it consistently with the characteristics of the real asset, and, if necessary, trigger action requests.
+
+With this approach, action requests generated by a DT can also be directed to physical assets other than the one the DT represents, enabling cross-functional collaboration between digital entities. In the use case considered, the second modeling approach was adopted.
